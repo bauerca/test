@@ -1,5 +1,4 @@
 
-
 ## Basic Usage
 A stream is ultimately just a sequence of values.  
 A streamset is a collection of streams.  
@@ -8,11 +7,10 @@ of values in the stream.  Streams are useful when you want to visualize
 how a quantity varies (usually over time) as well as it's ranking in a set
 of other quantities.
     
-    
 ```python
 def simple():
     import matplotlib.pyplot as plt
-    import streamgraph2 as sg
+    import streamgraph as sg
     streams = [
         sg.Stream([4.0, 2.5, 2.0,     ]),
         sg.Stream([2.0, 1.5, 2.0, 2.0,]),
@@ -22,7 +20,7 @@ def simple():
     sg.streamgraph(plt, streamset)
 
 ```
-<img src="simple.png"/>
+<img src="public/img/simple.png"/>
 
 
 ## Formatting
@@ -43,7 +41,7 @@ with the bottom of the plot with `align=0.0`.
 ```python
 def formatted():
     import matplotlib.pyplot as plt
-    import streamgraph2 as sg
+    import streamgraph as sg
     from matplotlib import cm
     streams = [
         sg.Stream([4.0, 2.5, 2.0,     ], label='gluon'),
@@ -61,7 +59,7 @@ def formatted():
     plt.setp(ax.xaxis.get_minorticklabels(), rotation=45)
 
 ```
-<img src="formatted.png"/>
+<img src="public/img/formatted.png"/>
 
 
 ## Grouping
@@ -79,7 +77,7 @@ float between 0.0 and 1.0 to indicate the relative size of the legend.
 ```python
 def group():
     import matplotlib.pyplot as plt
-    import streamgraph2 as sg
+    import streamgraph as sg
     from matplotlib import cm
     substreams = [
         sg.Stream([4.0, 2.5, 2.0, 1.0], label='sub1'),
@@ -99,7 +97,7 @@ def group():
     sg.streamgraph(plt, streamset, legend=0.25)
 
 ```
-<img src="group.png"/>
+<img src="public/img/group.png"/>
 
 
 ## Recursion
@@ -111,7 +109,7 @@ pretty fractal.
 ```python
 def braid():
     import matplotlib.pyplot as plt
-    import streamgraph2 as sg
+    import streamgraph as sg
     sg.RECURSION_LIMIT = 4
     patt = '''
         123
@@ -132,7 +130,7 @@ def braid():
     sg.streamgraph(plt, streamset)
 
 ```
-<img src="braid.png"/>
+<img src="public/img/braid.png"/>
 
  
 ## GDP version 1
@@ -145,7 +143,7 @@ example, Russia and Australia have similar GDP.
 ```python
 def gdp_indv():
     import matplotlib.pyplot as plt
-    import streamgraph2 as sg
+    import streamgraph as sg
     from matplotlib import cm
     import pandas
     from matplotlib.ticker import FuncFormatter
@@ -154,7 +152,7 @@ def gdp_indv():
         return '$%1.1fT' % (x*1e-12)
     formatter = FuncFormatter(trillions)
 
-    io = open('gdp.csv')
+    io = open('examples/gdp.csv')
     df1 = pandas.io.parsers.read_csv(io, index_col=0)
     df2 = df1.pivot('Year', 'Country Code')
     df3 = df2['Value']
@@ -171,7 +169,7 @@ def gdp_indv():
     ax.yaxis.set_major_formatter(formatter)
 
 ```
-<img src="gdp_indv.png"/>
+<img src="public/img/gdp_indv.png"/>
 
 
 ## GDP verion 2
@@ -183,7 +181,7 @@ entity.
 ```python
 def gdp_group():
     import matplotlib.pyplot as plt
-    import streamgraph2 as sg
+    import streamgraph as sg
     from matplotlib import cm
     import pandas
     from matplotlib.ticker import FuncFormatter
@@ -192,7 +190,7 @@ def gdp_group():
         return '$%1.1fT' % (x*1e-12)
     formatter = FuncFormatter(trillions)
     
-    io = open('gdp.csv')
+    io = open('examples/gdp.csv')
     df1 = pandas.io.parsers.read_csv(io, index_col=0)
     df2 = df1.pivot('Year', 'Country Code')
     df3 = df2['Value']
@@ -221,4 +219,4 @@ def gdp_group():
     ax.yaxis.set_major_formatter(formatter)
 
 ```
-<img src="gdp_group.png"/>
+<img src="public/img/gdp_group.png"/>
