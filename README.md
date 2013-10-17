@@ -11,6 +11,7 @@ of other quantities.
 def simple():
     import matplotlib.pyplot as plt
     import streamgraph as sg
+
     streams = [
         sg.Stream([4.0, 2.5, 2.0,     ]),
         sg.Stream([2.0, 1.5, 2.0, 2.0,]),
@@ -21,7 +22,6 @@ def simple():
 
 ```
 <img src="public/img/simple.png"/>
-
 
 ## Formatting
 Streams can have a label and custom color and shape formatting.  
@@ -61,7 +61,6 @@ def formatted():
 ```
 <img src="public/img/formatted.png"/>
 
-
 ## Grouping
 One of the more interesting features of this plot is the ability to group a 
 set of streams within a stream.  the inner streamgroup can be aligned within the
@@ -99,7 +98,6 @@ def group():
 ```
 <img src="public/img/group.png"/>
 
-
 ## Recursion
 A streamset can be associated with one of it's own inner streams, setting up
 the potential for infinite recursion.  The `RECURSION_LIMIT` value prevents
@@ -110,6 +108,7 @@ pretty fractal.
 def braid():
     import matplotlib.pyplot as plt
     import streamgraph as sg
+    import numpy as np
     sg.RECURSION_LIMIT = 4
     patt = '''
         123
@@ -132,13 +131,11 @@ def braid():
 ```
 <img src="public/img/braid.png"/>
 
- 
 ## GDP version 1
 Let's try this out on real-world data: country GDPs.  You'll need pandas for
 this example.  China's recent growth is immediately apparant. It is also obvious
 that Brazil has been doing well.  Relative GDP are also easily visible, for 
 example, Russia and Australia have similar GDP.
-
     
 ```python
 def gdp_indv():
@@ -171,9 +168,8 @@ def gdp_indv():
 ```
 <img src="public/img/gdp_indv.png"/>
 
-
 ## GDP verion 2
-> More of the story can be told when we group some of the countries 
+More of the story can be told when we group some of the countries 
 into larger economic entities.  In this case we create a streamgroup for the
 EU and for North America and it is interesting to note the EU's success as an
 entity.
