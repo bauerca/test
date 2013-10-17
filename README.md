@@ -1,7 +1,7 @@
 
 
 ## Basic Usage
-> A stream is ultimately just a sequence of values.  
+A stream is ultimately just a sequence of values.  
 A streamset is a collection of streams.  
 Streams have start points and end points defined by their offset and number
 of values in the stream.  Streams are useful when you want to visualize 
@@ -26,7 +26,7 @@ def simple():
 
 
 ## Formatting
-> Streams can have a label and custom color and shape formatting.  
+Streams can have a label and custom color and shape formatting.  
 Colormaps can be used to automtacially color all the streams 
 in a streamset or each stream can be individually colored.
 The transitions between values in a stream can be made smoother or sharper
@@ -36,7 +36,7 @@ streamset.
 The streamset can be aligned within it's bounds.  In the bounds of
 the plot axis in can be centered by using `align=0.5`.  
 
-> In the following example
+In the following example
 we have harshened the transitions, brashened the colors, and aligned the streams
 with the bottom of the plot with `align=0.0`.
     
@@ -65,7 +65,7 @@ def formatted():
 
 
 ## Grouping
-> One of the more interesting features of this plot is the ability to group a 
+One of the more interesting features of this plot is the ability to group a 
 set of streams within a stream.  the inner streamgroup can be aligned within the
 bounds of the stream in which it is contained.  If the values of a stream
 that contains a streamgroup are set to `None`, the stream size will be inferred 
@@ -73,7 +73,7 @@ from the sum of its inner streams.  If the `normalize` flag is used, the inner
 streams will be proportionately scaled to fit within the bounds of the outer
 stream.
 
-> The labels can be moved to a legend on the right by using `legend=True` or a 
+The labels can be moved to a legend on the right by using `legend=True` or a 
 float between 0.0 and 1.0 to indicate the relative size of the legend.
     
 ```python
@@ -103,7 +103,7 @@ def group():
 
 
 ## Recursion
-> A streamset can be associated with one of it's own inner streams, setting up
+A streamset can be associated with one of it's own inner streams, setting up
 the potential for infinite recursion.  The `RECURSION_LIMIT` value prevents
 this.  I'm not sure why anyone would want this except that it does make a
 pretty fractal.
@@ -136,7 +136,7 @@ def braid():
 
  
 ## GDP version 1
-> Let's try this out on real-world data: country GDPs.  You'll need pandas for
+Let's try this out on real-world data: country GDPs.  You'll need pandas for
 this example.  China's recent growth is immediately apparant. It is also obvious
 that Brazil has been doing well.  Relative GDP are also easily visible, for 
 example, Russia and Australia have similar GDP.
