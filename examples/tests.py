@@ -1,15 +1,14 @@
+import matplotlib.pyplot as plt
 
-## Basic Usage
+
+def simple1():
+    '''## Basic Usage
 A stream is ultimately just a sequence of values.  
 and a streamset is a collection of streams.  
 Streams have start points and end points defined by their offset and number
 of values in the stream.  Streams are useful when you want to visualize 
 how a quantity varies (usually over time) as well as it's ranking in a set
-of other quantities.
-    
-```python
-def simple1():
-    ''''''
+of other quantities.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
 
@@ -21,15 +20,9 @@ def simple1():
     streamset = sg.StreamSet(streams)
     sg.streamgraph(plt, streamset)
 
-```
-<img src="public/img/simple1.png"/>
-
-## Alternate definition
-an equivalent definition of stream offset using `None`
-    
-```python
 def simple2():
-    ''''''
+    '''## Alternate definition
+an equivalent definition of stream offset using `None`'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
 
@@ -40,11 +33,9 @@ def simple2():
     ]
     streamset = sg.StreamSet(streams)
     sg.streamgraph(plt, streamset)
-
-```
-<img src="public/img/simple2.png"/>
-
-## Formatting
+    
+def formatted():
+    '''## Formatting
 Streams can have a label and custom color and shape formatting.  
 Colormaps can be used to automtacially color all the streams 
 in a streamset or each stream can be individually colored.
@@ -57,11 +48,7 @@ the plot axis in can be centered by using `align=0.5`.
 
 In the following example
 we have harshened the transitions, brashened the colors, and aligned the streams
-with the bottom of the plot with `align=0.0`.
-    
-```python
-def formatted():
-    ''''''
+with the bottom of the plot with `align=0.0`.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
     from matplotlib import cm
@@ -79,11 +66,11 @@ def formatted():
     ax = fig.axes[0]
     plt.subplots_adjust(bottom=0.2)
     plt.setp(ax.xaxis.get_minorticklabels(), rotation=45)
-
-```
-<img src="public/img/formatted.png"/>
-
-## Grouping
+    
+    
+    
+def group():
+    '''## Grouping
 One of the more interesting features of this plot is the ability to group a 
 set of streams within a stream.  the inner streamgroup can be aligned within the
 bounds of the stream in which it is contained.  If the values of a stream
@@ -93,11 +80,7 @@ streams will be proportionately scaled to fit within the bounds of the outer
 stream.
 
 The labels can be moved to a legend on the right by using `legend=True` or a 
-float between 0.0 and 1.0 to indicate the relative size of the legend.
-    
-```python
-def group():
-    ''''''
+float between 0.0 and 1.0 to indicate the relative size of the legend.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
     from matplotlib import cm
@@ -118,18 +101,13 @@ def group():
     fig = plt.figure(figsize=(8, 3))
     sg.streamgraph(plt, streamset, legend=0.25)
 
-```
-<img src="public/img/group.png"/>
-
-## Recursion
+    
+def braid():
+    '''## Recursion
 A streamset can be associated with one of it's own inner streams, setting up
 the potential for infinite recursion.  The `RECURSION_LIMIT` value prevents
 this.  I'm not sure why anyone would want this except that it does make a
-pretty fractal.
-    
-```python
-def braid():
-    ''''''
+pretty fractal.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
     import numpy as np
@@ -152,18 +130,14 @@ def braid():
     fig = plt.figure(figsize=(14, 2))
     sg.streamgraph(plt, streamset)
 
-```
-<img src="public/img/braid.png"/>
-
-## GDP Individual
+    
+    
+def gdp_indv():
+    '''## GDP Individual
 Let's try this out on real-world data: country GDPs.  You'll need pandas for
 this example.  China's recent growth is immediately apparant. It is also obvious
 that Brazil has been doing well.  Relative GDP are also easily visible, for 
-example, Russia and Australia have similar GDP.
-    
-```python
-def gdp_indv():
-    ''''''
+example, Russia and Australia have similar GDP.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
     from matplotlib import cm
@@ -189,19 +163,14 @@ def gdp_indv():
     sg.streamgraph(plt, streamset, xs=df4.index, legend=True)
     ax = fig.axes[0]
     ax.yaxis.set_major_formatter(formatter)
-
-```
-<img src="public/img/gdp_indv.png"/>
-
-## GDP Grouped
+    
+    
+def gdp_group():
+    '''## GDP Grouped
 More of the story can be told when we group some of the countries 
 into larger economic entities.  In this case we create a streamgroup for the
 EU and for North America and it is interesting to note the EU's success as an
-entity.
-    
-```python
-def gdp_group():
-    ''''''
+entity.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
     from matplotlib import cm
@@ -239,18 +208,14 @@ def gdp_group():
     sg.streamgraph(plt, mainstreamset, xs=df4.index, legend=True)
     ax = fig.axes[0]
     ax.yaxis.set_major_formatter(formatter)
-
-```
-<img src="public/img/gdp_group.png"/>
-
-## Finally
+    
+    
+    
+def skills():
+    '''## Finally
 And finally, I get to use this for the purpose I intended: a graphic to add to my CV 
 to concisely communicate my skill history in a memorable way for anyone that 
-might find me useful.
-    
-```python
-def skills():
-    ''''''
+might find me useful.'''
     import matplotlib.pyplot as plt
     import streamgraph as sg
     from matplotlib import cm
@@ -278,6 +243,4 @@ def skills():
     
     sg.streamgraph(plt, main_streamset, xs=df.index, legend=False)
     plt.tight_layout()
-
-```
-<img src="public/img/skills.png"/>
+    
